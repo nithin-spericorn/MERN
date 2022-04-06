@@ -19,9 +19,12 @@ import Pay from "./pages/Pay"
 import { useSelector } from 'react-redux';
 
 function App() {
+  
+  
+  
   const user=useSelector(state=>state.user.currentUser);
   return (
-  <Router>
+    <Router>
     <Switch>
       <Route exact path="/"> <Home/> </Route>
       <Route  path="/cart"> <Cart/> </Route>

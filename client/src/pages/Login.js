@@ -95,8 +95,10 @@ console.log(email,password)
                 
           <Button onClick={HandileClick} disabled={isFetching}>Login</Button>
           {error&&<Error>Something Went wrong..</Error>}
-          <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
+          <a href="/register">
+          <Link >DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
+          </a>
                 </Form>
             </Wrapper>
             

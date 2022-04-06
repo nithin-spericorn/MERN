@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
 
 import {mobile} from "../Responsive";
+import { register} from '../redux/apiCall';
 
 const Container=styled.div`
 width: 100vw;
@@ -64,22 +66,31 @@ cursor:pointer;
 `;
 
 export const Register = () => {
+  const dispatch=useDispatch()
+  const [username,setUname]=useState("")
+  const [email,setEmail]=useState("")
+  const [password,setPassword]=useState("")
+  const {isFetching,error}=useSelector(state=>state.user)
+  
+  const HandileClick =(e)=>{
+e.preventDefault();
+
+register(dispatch,{username,email,password})
+console.log(email,password)
+  }
     return (
         <Container>
             <Wrapper>
                 <Form>
                 <Title>Create an Account</Title>
-                <Input placeholder="Name"/>
-                <Input placeholder="Last Name"/>
-                <Input placeholder="Username"/>
-                <Input placeholder="Email"/>
-                <Input placeholder="Password"/>
-                <Input placeholder="confirm password"/>
+                <Input placeholder="Name" onChange={(e)=>setUname(e.target.value)}/>
+                <Input placeholder="Email"  onChange={(e)=>setEmail(e.target.value)}/>
+                <Input placeholder="Password"  onChange={(e)=>setPassword(e.target.value)}/>
                 <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Button onClick={HandileClick}>CREATE</Button>
                 </Form>
             </Wrapper>
             
